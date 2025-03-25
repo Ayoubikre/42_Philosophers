@@ -6,7 +6,15 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:19:14 by aakritah          #+#    #+#             */
-/*   Updated: 2025/03/25 13:19:15 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:03:31 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MAIN_H
+#define MAIN_H
+
+#include <stdio.h>
+#include <unistd.h>
+
+
+#endif
