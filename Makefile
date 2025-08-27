@@ -1,5 +1,6 @@
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CC = cc
+CFLAGS = -Wall
+# CFLAGS = -Wall -Werror -Wextra
 
 SRC = main.c
 OBJC = $(SRC:%.c=%.o)

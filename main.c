@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:19:10 by aakritah          #+#    #+#             */
-/*   Updated: 2025/03/25 15:06:05 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/08/27 18:57:11 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int main()
+int main(int ac , char **ar)
 {
+    
+    
+    
 }
