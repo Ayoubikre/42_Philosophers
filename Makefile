@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall
 # CFLAGS = -Wall -Werror -Wextra
 
-SRC = main.c
+SRC = main.c init.c utils.c routin.c
 OBJC = $(SRC:%.c=%.o)
 
 NAME = philo

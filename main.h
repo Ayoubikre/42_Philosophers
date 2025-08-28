@@ -6,13 +6,14 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:50:42 by noctis            #+#    #+#             */
-/*   Updated: 2025/08/27 19:04:37 by noctis           ###   ########.fr       */
+/*   Updated: 2025/08/28 06:05:03 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <limits.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -26,19 +27,21 @@ typedef struct s_data
 	int				tt_eat;
 	int				tt_sleep;
 	int				must_eat;
+
 	long long		start;
 	int				dead;
 	pthread_mutex_t	m_dead;
 	pthread_mutex_t	m_print;
 	pthread_mutex_t	*m_forks;
+	pthread_t		monitor;
 	struct s_philo	*philo;
 }					t_data;
 
 typedef struct s_philo
 {
 	int				id;
-	int				meals_n;
-	long long		meals_ts;
+	int				meal_nb;
+	long long		last_meal_time;
 	pthread_t		th;
 	pthread_mutex_t	m_meal;
 	pthread_mutex_t	*m_left_fork;
@@ -46,5 +49,21 @@ typedef struct s_philo
 	t_data			*data;
 
 }					t_philo;
+
+int					main(int ac, char **ar);
+int					ft_init(t_data *data, int ac, char **ar);
+
+// --------------------utils
+long long			get_timestamp(void);
+int					ft_atoi(const char *str);
+int					ft_is_N_digit(int c);
+void				ft_free(t_data *data);
+void				ft_clean(t_data *data);
+
+// --------------------routin
+
+void				*ft_routin(void *ptr);
+
+void				*ft_routin_m(void *ptr);
 
 #endif
