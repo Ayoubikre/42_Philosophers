@@ -6,7 +6,7 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:29:25 by noctis            #+#    #+#             */
-/*   Updated: 2025/08/28 06:07:26 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/02 18:29:28 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,15 @@ void	ft_free(t_data *data)
 {
 	free(data->m_forks);
 	free(data->philo);
-	free(data);
 }
 
 void	ft_clean(t_data *data)
 {
 	int	i;
 
+	i = 0;
 	pthread_mutex_destroy(&data->m_dead);
 	pthread_mutex_destroy(&data->m_print);
-	i = 0;
 	while (i < data->nb)
 	{
 		pthread_mutex_destroy(&data->m_forks[i]);

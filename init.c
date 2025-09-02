@@ -6,7 +6,7 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:07:24 by noctis            #+#    #+#             */
-/*   Updated: 2025/08/28 05:37:08 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/02 18:10:02 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,6 @@ int	ft_check(int ac, char **ar)
 	return (0);
 }
 
-int	ft_init_data(t_data *data, int ac, char **ar, int i)
-{
-	if (ac < 5 || ac > 6 || ft_check(ac, ar) == -1)
-		return (printf("ERROR : Invalid Arguments\n"), -1);
-	data->nb = ft_atoi(ar[1]);
-	data->tt_die = ft_atoi(ar[2]);
-	data->tt_eat = ft_atoi(ar[3]);
-	data->tt_sleep = ft_atoi(ar[4]);
-	data->must_eat = -1;
-	if (ac == 6)
-		data->must_eat = ft_atoi(ar[5]);
-	data->start = get_timestamp();
-	data->dead = 0;
-	data->philo = malloc(sizeof(t_philo) * data->nb);
-	data->m_forks = malloc(sizeof(pthread_mutex_t) * data->nb);
-	if (!data->m_forks || !data->philo)
-		return (-1);
-	pthread_mutex_init(&data->m_dead, NULL);
-	pthread_mutex_init(&data->m_print, NULL);
-	while (i < data->nb)
-	{
-		pthread_mutex_init(&data->m_forks[i], NULL);
-		i++;
-	}
-	return (0);
-}
-
 void	ft_init_philo(t_data *data, t_philo *philo)
 {
 	int	i;
@@ -85,12 +58,30 @@ void	ft_init_philo(t_data *data, t_philo *philo)
 	}
 }
 
-int	ft_init(t_data *data, int ac, char **ar)
+int	ft_init(t_data *data, int ac, char **ar, int i)
 {
-	data->m_forks = NULL;
-	data->philo = NULL;
-	if (ft_init_data(data, ac, ar, 0) == -1)
-		return (-1);
+	if (ac < 5 || ac > 6 || ft_check(ac, ar) == -1)
+		return (printf("ERROR : Invalid Arguments\n"), -1);
+	data->nb = ft_atoi(ar[1]);
+	data->tt_die = ft_atoi(ar[2]);
+	data->tt_eat = ft_atoi(ar[3]);
+	data->tt_sleep = ft_atoi(ar[4]);
+	data->must_eat = -1;
+	if (ac == 6)
+		data->must_eat = ft_atoi(ar[5]);
+	data->start = get_timestamp();
+	data->dead = 0;
+	data->philo = malloc(sizeof(t_philo) * data->nb);
+	data->m_forks = malloc(sizeof(pthread_mutex_t) * data->nb);
+	if (!data->m_forks || !data->philo)
+		return (ft_free(data), -1);
+	pthread_mutex_init(&data->m_dead, NULL);
+	pthread_mutex_init(&data->m_print, NULL);
+	while (i < data->nb)
+	{
+		pthread_mutex_init(&data->m_forks[i], NULL);
+		i++;
+	}
 	ft_init_philo(data, data->philo);
 	return (0);
 }

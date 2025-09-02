@@ -6,7 +6,7 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:50:42 by noctis            #+#    #+#             */
-/*   Updated: 2025/08/28 06:05:03 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/02 18:28:35 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ typedef struct s_philo
 }					t_philo;
 
 int					main(int ac, char **ar);
-int					ft_init(t_data *data, int ac, char **ar);
+int					ft_init(t_data *data, int ac, char **ar, int i);
+
 
 // --------------------utils
 long long			get_timestamp(void);
@@ -64,6 +65,6 @@ void				ft_clean(t_data *data);
 
 void				*ft_routin(void *ptr);
 
-void				*ft_routin_m(void *ptr);
+void				*ft_monitor(void *ptr);
 
 #endif
