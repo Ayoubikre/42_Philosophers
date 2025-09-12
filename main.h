@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:50:42 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/02 18:28:35 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/12 17:27:47 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ typedef struct s_data
 	int				tt_eat;
 	int				tt_sleep;
 	int				must_eat;
-
+	
+	int				ready;
 	long long		start;
 	int				dead;
 	pthread_mutex_t	m_dead;
@@ -47,7 +48,6 @@ typedef struct s_philo
 	pthread_mutex_t	*m_left_fork;
 	pthread_mutex_t	*m_right_fork;
 	t_data			*data;
-
 }					t_philo;
 
 int					main(int ac, char **ar);
