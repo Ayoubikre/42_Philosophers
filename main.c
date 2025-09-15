@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:19:10 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/12 20:57:23 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/15 17:18:42 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_philo(t_data *data, int i)
 				(void *)&(data->philo[i]));
 		i++;
 	}
-	// pthread_create(&(data->monitor), NULL, ft_monitor, (void *)data);
+	pthread_create(&(data->monitor), NULL, ft_monitor, (void *)data);
 	data->ready=1;
 	i = 0;
 	while (i < data->nb)
@@ -28,7 +28,7 @@ int	ft_philo(t_data *data, int i)
 		pthread_join(data->philo[i].th, NULL);
 		i++;
 	}
-	// pthread_join(data->monitor, NULL);
+	pthread_join(data->monitor, NULL);
 	return (0);
 }
 
