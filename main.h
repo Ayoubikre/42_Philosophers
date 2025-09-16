@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:50:42 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/12 17:27:47 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/16 14:11:27 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct s_data
 	int				tt_die;
 	int				tt_eat;
 	int				tt_sleep;
-	int				must_eat;
+	int				meal_max;
 	
 	int				ready;
-	long long		start;
+	long long		start_time; 
 	int				dead;
 	pthread_mutex_t	m_dead;
 	pthread_mutex_t	m_print;
@@ -38,13 +38,14 @@ typedef struct s_data
 	struct s_philo	*philo;
 }					t_data;
 
+
 typedef struct s_philo
 {
 	int				id;
 	int				meal_nb;
 	long long		last_meal_time;
 	pthread_t		th;
-	pthread_mutex_t	m_meal;
+	pthread_mutex_t	m_meal_nb;
 	pthread_mutex_t	*m_left_fork;
 	pthread_mutex_t	*m_right_fork;
 	t_data			*data;

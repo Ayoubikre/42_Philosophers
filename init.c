@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:07:24 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/12 20:27:26 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:20:59 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	ft_init_philo(t_data *data, t_philo *philo)
 	{
 		philo[i].id = i + 1;
 		philo[i].meal_nb = 0;
-		philo[i].last_meal_time = data->start;
-		pthread_mutex_init(&philo[i].m_meal, NULL);
+		philo[i].last_meal_time = data->start_time;
+		pthread_mutex_init(&philo[i].m_meal_nb, NULL);
 		philo[i].m_right_fork = &data->m_forks[(i) % data->nb];
 		philo[i].m_left_fork = &data->m_forks[(i + 1) % data->nb];
 		philo[i].data = data;
@@ -66,11 +66,11 @@ int	ft_init(t_data *data, int ac, char **ar, int i)
 	data->tt_die = ft_atoi(ar[2]);
 	data->tt_eat = ft_atoi(ar[3]);
 	data->tt_sleep = ft_atoi(ar[4]);
-	data->must_eat = -1;
+	data->meal_max = -1;
 	if (ac == 6)
-		data->must_eat = ft_atoi(ar[5]);
+		data->meal_max = ft_atoi(ar[5]);
 	data->ready=0;
-	data->start = get_timestamp();
+	data->start_time = get_timestamp();
 	data->dead = 0;
 	data->philo = malloc(sizeof(t_philo) * data->nb);
 	data->m_forks = malloc(sizeof(pthread_mutex_t) * data->nb);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:29:25 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/02 18:29:28 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/16 14:16:03 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_clean(t_data *data)
 	while (i < data->nb)
 	{
 		pthread_mutex_destroy(&data->m_forks[i]);
-		pthread_mutex_destroy(&data->philo[i].m_meal);
+		pthread_mutex_destroy(&data->philo[i].m_meal_nb);
 		i++;
 	}
 	ft_free(data);

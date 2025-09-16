@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:19:10 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/16 13:01:58 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/16 13:37:22 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ int	main(int ac, char **ar)
 	ft_philo(&data,0);
 	return (ft_clean(&data), 0);
 }
+
 
