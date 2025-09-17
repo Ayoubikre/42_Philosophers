@@ -3,31 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:29:25 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/16 14:16:03 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:36:30 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-
-// void ft_usleep(long long time) {
-//     long long start = get_current_time();
-// Similar to get_timestamp but absolute
-//     while (get_current_time() - start < time) {
-//         usleep(50);  // Small sleeps to check often
-//     }
-// }
-
-// void print_status(t_philo *philo, char *msg) {
-//     pthread_mutex_lock(&philo->data->print_mutex);
-//     if (philo->data->stop_flag == 0) {
-// Only print if simulation not stopped
-//         printf("%lld %d %s\n", get_timestamp(philo->data), philo->id, msg);
-//     }
-//     pthread_mutex_unlock(&philo->data->print_mutex);
-// }
 
 int	ft_atoi(const char *str)
 {

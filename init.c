@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:07:24 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/16 16:20:59 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:07:29 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_check(int ac, char **ar)
 				return (-1);
 			j++;
 		}
+		if(ft_atoi(ar[i])<=0)
+			return -1;
 		i++;
 	}
 	return (0);

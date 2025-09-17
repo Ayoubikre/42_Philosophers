@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routin.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 05:47:55 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/16 16:42:20 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:11:24 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int tmp_check_death(t_data *data)
 void ft_log(t_data *data , int nb, char *t)
 {
 	pthread_mutex_lock(&data->m_print);
-		printf("%lld %d %s", get_timestamp()-data->start_time , nb, t);
+		if(tmp_check_death(data) == 0)
+			printf("%lld %d %s", get_timestamp()-data->start_time , nb, t);
 	pthread_mutex_unlock(&data->m_print);
 
 }
@@ -111,7 +112,9 @@ void	*ft_routin(void *ptr)
 		if(ft_sleep(data, philo))
 			return NULL;
 		i++;
+
 	}
+	return NULL;
 }
 
 
