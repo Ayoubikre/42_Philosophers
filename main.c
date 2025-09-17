@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:19:10 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/16 13:37:22 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:15:48 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 
 int	ft_philo(t_data *data, int i)
 {
-	while (i < data->nb)
+	if(data->nb==1)
+	{	
+			pthread_create(&(data->philo[i].th), NULL, ft_routin_one, (void *)&(data->philo[i]));
+	}
+	else
 	{
-		pthread_create(&(data->philo[i].th), NULL, ft_routin,
-				(void *)&(data->philo[i]));
-		i++;
+		while (i < data->nb)
+		{
+			pthread_create(&(data->philo[i].th), NULL, ft_routin,
+					(void *)&(data->philo[i]));
+			i++;
+		}
 	}
 	pthread_create(&(data->monitor), NULL, ft_monitor, (void *)data);
 	data->ready=1;

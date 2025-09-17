@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:50:42 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/16 14:11:27 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:16:32 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void				ft_clean(t_data *data);
 // --------------------routin
 
 void				*ft_routin(void *ptr);
+void	*ft_routin_one(void *ptr);
 
 void				*ft_monitor(void *ptr);
 
