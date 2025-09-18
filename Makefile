@@ -10,7 +10,8 @@ NAME = philo
 all: clean $(NAME) 
 
 $(NAME): $(OBJC)
-	$(CC) $(CFLAGS) $(OBJC) -o $(NAME) && echo && ./$(NAME) 4 01 100 1
+	$(CC) $(CFLAGS) $(OBJC) -o $(NAME)
+# $(CC) $(CFLAGS) $(OBJC) -o $(NAME) && echo && ./$(NAME) 5 300 100 100
 
 %.o: %.c main.h
 	$(CC) $(CFLAGS) -c $< -o $@

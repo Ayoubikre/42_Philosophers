@@ -6,13 +6,13 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 05:47:55 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/17 09:11:24 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/18 19:14:15 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int tmp_check_death(t_data *data)
+int ft_tmp_check_death(t_data *data)
 {
 	pthread_mutex_lock(&data->m_dead);
 		if(data->dead == 1)
@@ -21,13 +21,30 @@ int tmp_check_death(t_data *data)
 	return 0;
 }
 
-void ft_log(t_data *data , int nb, char *t)
+void ft_log(t_data *data, int id, char *msg)
 {
-	pthread_mutex_lock(&data->m_print);
-		if(tmp_check_death(data) == 0)
-			printf("%lld %d %s", get_timestamp()-data->start_time , nb, t);
-	pthread_mutex_unlock(&data->m_print);
+    pthread_mutex_lock(&data->m_print);
+        printf("%lld %d %s\n", get_timestamp() - data->start_time, id, msg);
+    pthread_mutex_unlock(&data->m_print);
+}
 
+void	*ft_routin_one(void *ptr)
+{
+    t_philo *philo;
+    t_data *data;
+    
+    philo = (t_philo *)ptr;
+    data = philo->data;
+    ft_log(data, philo->id, "is thinking");
+    pthread_mutex_lock(philo->m_left_fork);
+    ft_log(data, philo->id,"has taken a fork");
+    pthread_mutex_unlock(philo->m_left_fork);
+    usleep(data->tt_die*1000);
+    pthread_mutex_lock(&data->m_dead);
+        data->dead=1;
+        ft_log(data, philo->id, "died");
+    pthread_mutex_unlock(&data->m_dead);
+    return NULL; 
 }
 
 int ft_eat(t_data *data, t_philo *philo)
@@ -42,11 +59,11 @@ int ft_eat(t_data *data, t_philo *philo)
 		pthread_mutex_lock(philo->m_right_fork);
 		pthread_mutex_lock(philo->m_left_fork);
 	}
-	if(tmp_check_death(data))
+	if(ft_tmp_check_death(data))
 		return 1;
-	ft_log(data, philo->id, "has taken a fork\n");
-	ft_log(data, philo->id, "has taken a fork\n");
-	ft_log(data, philo->id, "is eating\n");
+	ft_log(data, philo->id, "has taken a fork");
+	ft_log(data, philo->id, "has taken a fork");
+	ft_log(data, philo->id, "is eating");
 	
 	pthread_mutex_lock(&philo->m_meal_nb);
 		philo->meal_nb++;
@@ -65,29 +82,29 @@ int ft_eat(t_data *data, t_philo *philo)
 		pthread_mutex_unlock(philo->m_left_fork);
 		pthread_mutex_unlock(philo->m_right_fork);
 	}
-	return (tmp_check_death(data));
+	return (ft_tmp_check_death(data));
 }
 
 // int ft_sleep(t_data *data, t_philo *philo)
 // {
 // 	long long time=0;
-// 	ft_log(data, philo->id, "is sleeping\n");
+// 	ft_log(data, philo->id, "is sleeping");
 	
 // 	while(time < data->tt_sleep*1000)
 // 	{
-// 		if(tmp_check_death(data))
+// 		if(ft_tmp_check_death(data))
 // 			return 1;	
 // 		time+=50;
 // 		usleep(50);
 // 	}
-// 	return (tmp_check_death(data));
+// 	return (ft_tmp_check_death(data));
 // }
 
 int ft_sleep(t_data *data, t_philo *philo)
 {
-	ft_log(data, philo->id, "is sleeping\n");
+	ft_log(data, philo->id, "is sleeping");
 	usleep(data->tt_sleep*1000);
-	return (tmp_check_death(data));
+	return (ft_tmp_check_death(data));
 }
 
 
@@ -104,9 +121,9 @@ void	*ft_routin(void *ptr)
 			return NULL;
 	
 	int i=0;
-	while(!tmp_check_death(data))
+	while(!ft_tmp_check_death(data))
 	{
-		ft_log(data, philo->id, "is Thinking\n");
+		ft_log(data, philo->id, "is Thinking");
 		if(ft_eat(data, philo))
 			return NULL;
 		if(ft_sleep(data, philo))
