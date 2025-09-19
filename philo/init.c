@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:07:24 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/19 17:56:08 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/20 00:40:39 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_init_philo(t_data *data, t_philo *philo)
 int	ft_init(t_data *data, int ac, char **ar, int i)
 {
 	if (ac < 5 || ac > 6 || ft_check(ac, ar) == -1)
-		return (printf("ERROR : Invalid Arguments\n"), -1);
+		return (printf(RED"ERROR : Invalid Arguments\n"RESET), -1);
 	data->nb = ft_atoi(ar[1]);
 	data->tt_die = ft_atoi(ar[2]);
 	data->tt_eat = ft_atoi(ar[3]);
