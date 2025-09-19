@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:07:24 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/17 09:07:29 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/19 17:56:08 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	ft_check(int ac, char **ar)
 		j = 0;
 		while (ar[i][j])
 		{
-			if (ft_is_N_digit(ar[i][j]))
+			if (ft_is_n_digit(ar[i][j]))
 				return (-1);
 			j++;
 		}
-		if(ft_atoi(ar[i])<=0)
-			return -1;
+		if (ft_atoi(ar[i]) <= 0)
+			return (-1);
 		i++;
 	}
 	return (0);
@@ -71,7 +71,7 @@ int	ft_init(t_data *data, int ac, char **ar, int i)
 	data->meal_max = -1;
 	if (ac == 6)
 		data->meal_max = ft_atoi(ar[5]);
-	data->ready=0;
+	data->ready = 0;
 	data->start_time = get_timestamp();
 	data->dead = 0;
 	data->philo = malloc(sizeof(t_philo) * data->nb);

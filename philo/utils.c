@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:29:25 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/17 09:36:30 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/19 17:56:16 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_atoi(const char *str)
 	return (result * signe);
 }
 
-int	ft_is_N_digit(int c)
+int	ft_is_n_digit(int c)
 {
 	if ('0' <= c && c <= '9')
 		return (0);
