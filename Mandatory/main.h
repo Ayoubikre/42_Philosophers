@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:50:42 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/19 17:55:26 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/19 18:39:43 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int					ft_thinking(t_philo *philo, t_data *data);
 int					ft_eating(t_philo *philo, t_data *data);
 int					ft_lock(t_philo *philo, t_data *data);
 int					ft_sleeping(t_philo *philo, t_data *data);
-int					ft_usleep(t_philo *philo, t_data *data, long long total);
+int					ft_usleep(t_data *data, long long total);
 
 //------------------------- Utils :
 int					ft_atoi(const char *str);

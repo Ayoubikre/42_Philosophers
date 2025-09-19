@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:39:27 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/19 18:02:25 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/19 18:39:36 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_eating(t_philo *philo, t_data *data)
 	if (ft_log(data, philo->id, "is eating"))
 		return (pthread_mutex_unlock(philo->m_left_fork),
 			pthread_mutex_unlock(philo->m_right_fork), 1);
-	if (ft_usleep(philo, data, data->tt_eat))
+	if (ft_usleep(data, data->tt_eat))
 		return (pthread_mutex_unlock(philo->m_left_fork),
 			pthread_mutex_unlock(philo->m_right_fork), 1);
 	return (pthread_mutex_unlock(philo->m_left_fork),
@@ -66,12 +66,12 @@ int	ft_sleeping(t_philo *philo, t_data *data)
 {
 	if (ft_log(data, philo->id, "is sleeping"))
 		return (1);
-	if (ft_usleep(philo, data, data->tt_sleep))
+	if (ft_usleep(data, data->tt_sleep))
 		return (1);
 	return (ft_tmp_check_death(data));
 }
 
-int	ft_usleep(t_philo *philo, t_data *data, long long total)
+int	ft_usleep(t_data *data, long long total)
 {
 	long long	tmp;
 
