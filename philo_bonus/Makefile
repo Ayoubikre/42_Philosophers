@@ -4,7 +4,8 @@ CFLAGS = -Wall
 # CFLAGS = -Wall -Werror -Wextra
 
 SRC = main_bonus.c \
-
+      init_bonus.c \
+      utils_bonus.c \
 
 OBJC = $(SRC:%.c=%.o)
 NAME = philo
