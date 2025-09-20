@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:50:42 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/19 18:39:43 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/20 01:15:27 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_data
 	int				tt_sleep;
 	int				meal_max;
 
-	int				ready;
 	long long		start_time;
 	int				dead;
 	pthread_mutex_t	m_dead;

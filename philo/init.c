@@ -6,7 +6,7 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 19:07:24 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/20 00:40:39 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/20 01:15:23 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	ft_init(t_data *data, int ac, char **ar, int i)
 	data->meal_max = -1;
 	if (ac == 6)
 		data->meal_max = ft_atoi(ar[5]);
-	data->ready = 0;
 	data->start_time = get_timestamp();
 	data->dead = 0;
 	data->philo = malloc(sizeof(t_philo) * data->nb);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:19:10 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/19 17:40:51 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/20 01:15:19 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	ft_philo(t_data *data, int i)
 		}
 	}
 	pthread_create(&(data->monitor), NULL, ft_monitor, (void *)data);
-	data->ready = 1;
 	i = 0;
 	while (i < data->nb)
 	{
