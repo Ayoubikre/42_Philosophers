@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_bonuc.c                                      :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 01:57:43 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/20 02:00:31 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/22 04:13:07 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,26 @@ int	ft_is_n_digit(int c)
 	return (1);
 }
 
-void	ft_clean(t_data *data)
+void	ft_close(t_data *data)
 {
 	sem_close(data->m_forks);
 	sem_close(data->m_print);
 	sem_close(data->m_dead);
 	sem_close(data->m_meal_nb);
+}
+
+void	ft_unlink(t_data *data)
+{
 	sem_unlink("/m_forks");
 	sem_unlink("/m_print");
 	sem_unlink("/m_dead");
 	sem_unlink("/m_meal_nb");
+}
+
+void	ft_clean(t_data *data)
+{
+	ft_close(data);
+	ft_unlink(data);
 	if (data->pid)
 		free(data->pid);
 }

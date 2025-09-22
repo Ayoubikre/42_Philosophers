@@ -6,7 +6,7 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 18:50:42 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/20 02:12:52 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/20 15:23:41 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,16 @@ int					main(int ac, char **ar);
 
 //------------------------- Init :
 int					ft_init(t_data *data, int ac, char **ar, int i);
+void				ft_init_philo(t_data *data, t_philo *philo, int id);
 int					ft_init_sem(t_data *data);
 int					ft_check(int ac, char **ar);
 long long			get_timestamp(void);
 
 //------------------------- Routin :
+int					ft_routin(t_data *data, t_philo *philo);
 
 //------------------------- Monitore :
+void				*ft_monitor(void *arg);
 
 //------------------------- Action :
 
@@ -75,5 +78,7 @@ long long			get_timestamp(void);
 int					ft_atoi(const char *str);
 int					ft_is_n_digit(int c);
 void				ft_clean(t_data *data);
+void				ft_unlink(t_data *data);
+void				ft_close(t_data *data);
 
 #endif

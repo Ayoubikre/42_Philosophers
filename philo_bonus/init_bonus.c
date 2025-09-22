@@ -6,7 +6,7 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 01:25:14 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/20 02:15:43 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/20 15:24:55 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ int	ft_check(int ac, char **ar)
 
 int	ft_init_sem(t_data *data)
 {
-	sem_unlink("/m_forks");
-	sem_unlink("/m_print");
-	sem_unlink("/m_dead");
-	sem_unlink("/m_meal_nb");
+	ft_unlink(data);
 	data->m_forks = sem_open("/m_forks", O_CREAT | O_EXCL, 0644, data->nb);
 	data->m_print = sem_open("/m_print", O_CREAT | O_EXCL, 0644, 1);
 	data->m_dead = sem_open("/m_dead", O_CREAT | O_EXCL, 0644, 1);
@@ -56,6 +53,16 @@ int	ft_init_sem(t_data *data)
 		|| data->m_dead == SEM_FAILED || data->m_meal_nb == SEM_FAILED)
 		return (-1);
 	return (0);
+}
+
+void	ft_init_philo(t_data *data, t_philo *philo, int id)
+{
+	data->philo = philo;
+	philo->id = id;
+	philo->meal_nb = 0;
+	philo->last_meal_time = data->start_time;
+	// pthread_create(&philo->monitor, NULL, ft_monitor,(void *)data);
+	// pthread_detach(&philo->monitor);
 }
 
 int	ft_init(t_data *data, int ac, char **ar, int i)
@@ -71,6 +78,7 @@ int	ft_init(t_data *data, int ac, char **ar, int i)
 		data->meal_max = ft_atoi(ar[5]);
 	data->start_time = get_timestamp();
 	data->dead = 0;
+	data->philo = NULL;
 	data->pid = NULL;
 	if (ft_init_sem(data) == -1)
 		return (-1);
