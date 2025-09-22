@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 01:25:14 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/20 15:24:55 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/22 16:51:03 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_check(int ac, char **ar)
 
 int	ft_init_sem(t_data *data)
 {
-	ft_unlink(data);
+	ft_unlink();
 	data->m_forks = sem_open("/m_forks", O_CREAT | O_EXCL, 0644, data->nb);
 	data->m_print = sem_open("/m_print", O_CREAT | O_EXCL, 0644, 1);
 	data->m_dead = sem_open("/m_dead", O_CREAT | O_EXCL, 0644, 1);
@@ -61,12 +61,12 @@ void	ft_init_philo(t_data *data, t_philo *philo, int id)
 	philo->id = id;
 	philo->meal_nb = 0;
 	philo->last_meal_time = data->start_time;
-	// pthread_create(&philo->monitor, NULL, ft_monitor,(void *)data);
-	// pthread_detach(&philo->monitor);
 }
 
-int	ft_init(t_data *data, int ac, char **ar, int i)
+int	ft_init(t_data *data, int ac, char **ar)
 {
+	data->pid = NULL;
+	data->philo = NULL;
 	if (ac < 5 || ac > 6 || ft_check(ac, ar) == -1)
 		return (printf(RED "ERROR : Invalid Arguments\n" RESET), -1);
 	data->nb = ft_atoi(ar[1]);
@@ -78,12 +78,11 @@ int	ft_init(t_data *data, int ac, char **ar, int i)
 		data->meal_max = ft_atoi(ar[5]);
 	data->start_time = get_timestamp();
 	data->dead = 0;
-	data->philo = NULL;
-	data->pid = NULL;
 	if (ft_init_sem(data) == -1)
 		return (-1);
 	data->pid = malloc(sizeof(pid_t) * data->nb);
 	if (!data->pid)
 		return (-1);
+	memset(data->pid, 0, sizeof(data->pid) * data->nb);
 	return (0);
 }

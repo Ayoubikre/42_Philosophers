@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 01:57:43 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/22 04:13:07 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/22 16:50:58 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ void	ft_close(t_data *data)
 	sem_close(data->m_print);
 	sem_close(data->m_dead);
 	sem_close(data->m_meal_nb);
+	if (data->pid)
+		free(data->pid);
 }
 
-void	ft_unlink(t_data *data)
+void	ft_unlink(void)
 {
 	sem_unlink("/m_forks");
 	sem_unlink("/m_print");
@@ -63,7 +65,5 @@ void	ft_unlink(t_data *data)
 void	ft_clean(t_data *data)
 {
 	ft_close(data);
-	ft_unlink(data);
-	if (data->pid)
-		free(data->pid);
+	ft_unlink();
 }

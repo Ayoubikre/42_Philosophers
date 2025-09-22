@@ -3,32 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 18:05:21 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/22 04:11:56 by noctis           ###   ########.fr       */
+/*   Updated: 2025/09/22 16:49:54 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_bonus.h"
 
-void	ft_wait(t_data *data, int i, int s, int j)
+int	main(int ac, char **ar)
 {
-	while (i < data->nb)
-	{
-		waitpid(-1, &s, 0);
-		if (WEXITSTATUS(s) != 0)
-		{
-			j = 0;
-			while (j < data->nb)
-			{
-				kill(data->pid[j], SIGTERM);
-				j++;
-			}
-			break ;
-		}
-		i++;
-	}
+	t_data	data;
+
+	if (ft_init(&data, ac, ar) == -1)
+		return (ft_clean(&data), -1);
+	ft_philo(&data, 0);
+	return (ft_clean(&data), 0);
 }
 
 int	ft_philo(t_data *data, int i)
@@ -41,8 +32,7 @@ int	ft_philo(t_data *data, int i)
 		if (data->pid[i] == -1)
 			(ft_clean(data), exit(1));
 		else if (data->pid[i] == 0)
-			return (ft_init_philo(data, &philo, i + 1), ft_routin(data, &philo),
-				0);
+			(ft_init_philo(data, &philo, i + 1), ft_routin(data, &philo));
 		else
 			i++;
 	}
@@ -50,12 +40,21 @@ int	ft_philo(t_data *data, int i)
 	return (0);
 }
 
-int	main(int ac, char **ar)
+void	ft_wait(t_data *data, int i, int s, int j)
 {
-	t_data	data;
-
-	if (ft_init(&data, ac, ar, 0) == -1)
-		return (ft_clean(&data), -1);
-	ft_philo(&data, 0);
-	return (ft_clean(&data), 0);
+	while (i < data->nb)
+	{
+		waitpid(-1, &s, 0);
+		if (WIFEXITED(s) && WEXITSTATUS(s) != 0)
+		{
+			j = 0;
+			while (j < data->nb)
+			{
+				kill(data->pid[j], SIGKILL);
+				j++;
+			}
+			break ;
+		}
+		i++;
+	}
 }
