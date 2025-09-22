@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:39:27 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/22 13:11:10 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/22 19:44:12 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_usleep(t_data *data, long long total)
 	{
 		if (ft_tmp_check_death(data))
 			return (1);
-		usleep(1);
+		usleep(500);
 	}
 	return (0);
 }

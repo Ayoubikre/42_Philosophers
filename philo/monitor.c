@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:39:17 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/22 13:17:11 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/22 19:44:45 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	*ft_monitor(void *arg)
 	while (1)
 	{
 		count = 0;
+		if (ft_monitor_2(data, 0, &count))
+			return (NULL);
 		if (data->meal_max != -1 && data->nb == count)
 		{
 			pthread_mutex_lock(&data->m_dead);

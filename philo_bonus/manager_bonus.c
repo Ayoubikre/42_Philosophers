@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 13:43:56 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/22 16:50:20 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/22 19:50:39 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_routin(t_data *data, t_philo *philo)
 	{
 		ft_thinking(data, philo);
 		ft_eating(data, philo);
+		if (data->meal_max != -1 && data->philo->meal_nb >= data->meal_max)
+			exit(0);
 		ft_sleeping(data, philo);
 	}
 }
@@ -41,8 +43,6 @@ void	*ft_monitor(void *arg)
 				data->philo->id, RED "died" RESET);
 			exit(1);
 		}
-		if (data->meal_max != -1 && data->philo->meal_nb >= data->meal_max)
-			exit(0);
 		sem_post(data->m_dead);
 		usleep(500);
 	}
