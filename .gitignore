@@ -1,0 +1,13 @@
+# Build artifacts
+*.o
+philo/philo
+philo_bonus/philo_bonus
+
+# IDE and editor files
+.vscode/
+.idea/
+*~
+.DS_Store
+
+# Debug files
+*.dSYM/

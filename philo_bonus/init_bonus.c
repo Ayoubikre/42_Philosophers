@@ -83,6 +83,6 @@ int	ft_init(t_data *data, int ac, char **ar)
 	data->pid = malloc(sizeof(pid_t) * data->nb);
 	if (!data->pid)
 		return (-1);
-	memset(data->pid, 0, sizeof(data->pid) * data->nb);
+	memset(data->pid, 0, sizeof(pid_t) * data->nb);
 	return (0);
 }
