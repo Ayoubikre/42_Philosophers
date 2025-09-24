@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 01:25:14 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/22 16:51:03 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/24 15:15:42 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ int	ft_init(t_data *data, int ac, char **ar)
 	data->pid = malloc(sizeof(pid_t) * data->nb);
 	if (!data->pid)
 		return (-1);
-	memset(data->pid, 0, sizeof(data->pid) * data->nb);
+	memset(data->pid, 0, sizeof(pid_t) * data->nb);
 	return (0);
 }

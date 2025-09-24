@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 13:43:56 by noctis            #+#    #+#             */
-/*   Updated: 2025/09/22 19:50:39 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/23 17:05:55 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_routin(t_data *data, t_philo *philo)
 	pthread_create(&philo->monitor, NULL, ft_monitor, (void *)data);
 	pthread_detach(philo->monitor);
 	if (philo->id % 2 == 0)
-		usleep(100);
+		usleep(500);
 	while (1)
 	{
 		ft_thinking(data, philo);

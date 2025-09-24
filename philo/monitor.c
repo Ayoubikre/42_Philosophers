@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:39:17 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/22 19:44:45 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/23 17:03:54 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_monitor_2(t_data *data, int i, int *count)
 			pthread_mutex_lock(&data->m_print);
 			pthread_mutex_lock(&data->m_dead);
 			data->dead = 1;
-			printf(RED "%lld %d died\n" RESET, tmp - data->start_time,
+			printf(RED"%lld %d died\n"RESET, tmp - data->start_time,
 				philo->id);
 			return (pthread_mutex_unlock(&data->m_dead),
 				pthread_mutex_unlock(&data->m_print),

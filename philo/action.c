@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:39:27 by aakritah          #+#    #+#             */
-/*   Updated: 2025/09/22 19:44:12 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/09/23 17:04:10 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,13 @@ int	ft_eating(t_philo *philo, t_data *data)
 
 int	ft_lock(t_philo *philo, t_data *data)
 {
-	if (philo->id % 2 != 0)
-	{
-		pthread_mutex_lock(philo->m_left_fork);
-		if (ft_log(data, philo->id, "has taken a fork"))
-			return (pthread_mutex_unlock(philo->m_left_fork), 1);
-		pthread_mutex_lock(philo->m_right_fork);
-		if (ft_log(data, philo->id, "has taken a fork"))
-			return (pthread_mutex_unlock(philo->m_right_fork),
-				pthread_mutex_unlock(philo->m_left_fork), 1);
-	}
-	else
-	{
-		pthread_mutex_lock(philo->m_right_fork);
-		if (ft_log(data, philo->id, "has taken a fork"))
-			return (pthread_mutex_unlock(philo->m_right_fork), 1);
-		pthread_mutex_lock(philo->m_left_fork);
-		if (ft_log(data, philo->id, "has taken a fork"))
-			return (pthread_mutex_unlock(philo->m_left_fork),
-				pthread_mutex_unlock(philo->m_right_fork), 1);
-	}
+	pthread_mutex_lock(philo->m_left_fork);
+	if (ft_log(data, philo->id, "has taken a fork"))
+		return (pthread_mutex_unlock(philo->m_left_fork), 1);
+	pthread_mutex_lock(philo->m_right_fork);
+	if (ft_log(data, philo->id, "has taken a fork"))
+		return (pthread_mutex_unlock(philo->m_right_fork),
+			pthread_mutex_unlock(philo->m_left_fork), 1);
 	pthread_mutex_lock(&philo->m_meal_nb);
 	philo->meal_nb++;
 	philo->last_meal_time = get_timestamp();
